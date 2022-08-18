@@ -47,7 +47,7 @@ def morris_bkapp(doc):
                   phi=[0.025], C=[6.698], dt=[1e-4],
                   E_L=[-50.0], E_Ca=[100.0], E_K=[-70.0],
                   g_L=[0.5], g_Ca=[1.1], g_K=[2.0],
-                  V_init=[-50.0], N_init=[0.02])
+                  V_init=[-52.5], N_init=[0.02])
 
     params_source = ColumnDataSource(data=params)
 
@@ -65,29 +65,33 @@ def morris_bkapp(doc):
     for i in range(len(t)):
         V_pre, N_pre = ml_step(I_syn[i], V[i], N[i], dt)
         if i < len(t) - 1:
-            V[i + 1] = V_pre
+            V[i+1] = V_pre
+            N[i+1] = N_pre
 
     source = ColumnDataSource(data=dict(I=I_syn, V=V, t=t, N=N))
 
-    plot1 = figure(width=600, height=300)
+    plot1 = figure(width=600, height=300, title='I_syn')
     # plot.line('t', 'I', source=source, line_color='orange', legend_label='I_syn')
-    plot1.line('t', 'V', source=source, line_color='skyblue', line_width=3, legend_label='V')
-    plot2 = figure(width=600, height=300)
-    plot2.line('t', 'I', source=source, line_color='orange', line_width=3, legend_label='I_syn')
+    plot1.line('t', 'V', source=source, line_color='skyblue', line_width=3)
+    plot2 = figure(width=600, height=300, title='V')
+    plot2.line('t', 'I', source=source, line_color='orange', line_width=3)
+    plot3 = figure(width=600, height=300, title='Phase Portrait')
+    plot3.line('N', 'V', source=source, line_color='blueviolet', line_width=3)
+
 
     slider_V_1 = Slider(start=-120.0, end=120.0, value=30.0, step=.5, title="V_1")
     slider_V_2 = Slider(start=-120.0, end=120.0, value=15.0, step=.5, title="V_2")
     slider_V_3 = Slider(start=-120.0, end=120.0, value=0.0, step=.5, title="V_3")
     slider_V_4 = Slider(start=-120.0, end=120.0, value=30.0, step=.5, title="V_4")
-    slider_V_init = Slider(start=-120.0, end=120.0, value=-50.0, step=.5, title="V_init")
-    slider_N_init = Slider(start=-5.0, end=5.0, value=0.02, step=.01, title="N_init")
+    slider_V_init = Slider(start=-120.0, end=120.0, value=-52.5, step=.5, title="V_init")
+    slider_N_init = Slider(start=0.0, end=5.0, value=0.02, step=.01, title="N_init")
     slider_E_L = Slider(start=-120.0, end=120.0, value=-50.0, step=.5, title="E_L")
     slider_E_K = Slider(start=-120.0, end=120.0, value=-70.0, step=.5, title="E_K")
     slider_E_Ca = Slider(start=-120.0, end=120.0, value=100.0, step=.5, title="E_Ca")
     slider_g_L = Slider(start=-10.0, end=10.0, value=0.5, step=.1, title="g_L")
     slider_g_K = Slider(start=-10.0, end=10.0, value=2.0, step=.1, title="g_K")
     slider_g_Ca = Slider(start=-10.0, end=10.0, value=1.1, step=.1, title="g_Ca")
-    slider_phi = Slider(start=0, end=5, value=0.025, step=.025, title="phi")
+    slider_phi = Slider(start=0, end=0.5, value=0.025, step=.005, title="phi", format='0.0000')
     slider_C = Slider(start=0.0, end=10.0, value=6.0, step=.1, title="C")
 
     def update(attrname, old, new):
@@ -119,7 +123,8 @@ def morris_bkapp(doc):
         for i in range(len(t)):
             V_pre, N_pre = ml_step(I_syn[i], V[i], N[i], dt, params_update)
             if i < len(t) - 1:
-                V[i + 1] = V_pre
+                V[i+1] = V_pre
+                N[i+1] = N_pre
 
         source.data = dict(I=I_syn, V=V, t=t, N=N)
         params_source.data = params
@@ -135,7 +140,7 @@ def morris_bkapp(doc):
                     slider_g_L, slider_g_K, slider_g_Ca,
                     slider_phi, slider_C, slider_V_init, slider_N_init)
 
-    doc.add_root(row(inputs, column(plot2, plot1)))
+    doc.add_root(row(inputs, column(plot2, plot1, plot3)))
 
     doc.theme = Theme(filename="theme.yaml")
 
