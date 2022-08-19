@@ -70,12 +70,11 @@ def morris_bkapp(doc):
 
     source = ColumnDataSource(data=dict(I=I_syn, V=V, t=t, N=N))
 
-    plot1 = figure(width=600, height=300, title='I_syn')
-    # plot.line('t', 'I', source=source, line_color='orange', legend_label='I_syn')
+    plot1 = figure(width=600, height=250, title='V')
     plot1.line('t', 'V', source=source, line_color='skyblue', line_width=3)
-    plot2 = figure(width=600, height=300, title='V')
+    plot2 = figure(width=600, height=250, title='I_syn')
     plot2.line('t', 'I', source=source, line_color='orange', line_width=3)
-    plot3 = figure(width=600, height=300, title='Phase Portrait')
+    plot3 = figure(width=600, height=250, title='Phase Portrait')
     plot3.line('N', 'V', source=source, line_color='blueviolet', line_width=3)
 
 
