@@ -38,3 +38,11 @@ Descrition of files:
 ### An implementation of the **Hodgkin Huxley** Neuron
 
 `hodgkin_slider.ipynb`  - A python interactive implementation of the **Hodgkin Huxley** model. You can adjust parameters for the neuron model and get the output in real-time. 
+
+### An implementation of the Integrate and Fire Neuron
+
+`IAF_slider.ipynb` - A python interactive implementation of the **Integrate and Fire** model. 
+
+### An implementation of the Leaky Integrate and Fire Neuron
+
+`LIF_slider.ipynb` - A python interactive implementation of the **Leaky Integrate and Fire** model. 
