@@ -1,18 +1,4 @@
 # Neural-adjuster
-<p align="center">
-  	<img alt="Logo image of NeuralAdjuster" src="./images/logo.png" width=80%>
-</p> 
-
-<p align="center">
-  <a href="http://docs.bokeh.org/en/latest/"><img alt="Bokeh" src="https://img.shields.io/badge/github-bokeh-orange.svg?style=flat-square&logo=github"></a>
-  <a href="https://boyuan.io/research/neural_adjuster/html/intro.html"><img alt="Online" src="https://img.shields.io/badge/book-neural_adjuster-green.svg?style=flat-square"></a></p>
-
-- **Website**: https://boyuan.io/research/neural_adjuster/html/intro.html
-- **Source**: https://github.com/boyuan99/neural-adjuster
-- **Bug reports**: https://github.com/boyuan99/neural-adjuster/issues
-
-
-
 This is a simple slider tool that allows you to understand how each parameter affects the neural response and to find the best parameter you want.
 
 ## Models
