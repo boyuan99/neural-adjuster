@@ -15,7 +15,7 @@ Descrition of files:
 
 * `flask_embed.py` - Run the script and you will get a server under port:8000. Go to `http://127.0.0.1:8000/` to use the interactive adjuster.
 
-  ![example_server_morris](./images/example_server_morris.png)
+  ![example_server_morris](./docs/source/_static/example_server_morris.png)
 
 
 
