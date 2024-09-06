@@ -1,0 +1,12 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: book/intro
+parts:
+  - caption: Neurons
+    chapters:
+      - file: Jupyter_Notebooks/IAF_slider
+      - file: Jupyter_Notebooks/LIF_slider
+      - file: Jupyter_Notebooks/morris_slider
+      - file: Jupyter_Notebooks/hodgkin_slider
